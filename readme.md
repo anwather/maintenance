@@ -1,0 +1,5 @@
+- Input master file holding all the ADR schedule information
+- Arc resources get a tag i.e. PatchingGroup
+- Azure Policy definition (customised)
+- Master list of maintenance configurations -> patching tags to generate policy assignment
+- Process to remove all maintenance configurations from a machine
