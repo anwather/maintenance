@@ -1,0 +1,74 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "schedules": {
+            "value": [
+                {
+                    "name": "definition-updates",
+                    "classifications": [
+                        //"Critical","Security","UpdateRollup","FeaturePack","ServicePack","Definition","Tools","Updates"
+                        "Definition"
+                    ],
+                    "rebootSetting": "Never", // Never, IfRequired, Always
+                    "maintenanceWindow": {
+                        "startDateTime": "2023-03-28 00:00", // YYYY-MM-DD HH:MM
+                        "duration": "01:10", // HH:MM
+                        "timeZone": "Cen. Australia Standard Time",
+                        "recurEvery": "6Hour" // https://learn.microsoft.com/en-us/azure/templates/microsoft.maintenance/maintenanceconfigurations?pivots=deployment-language-arm-template#maintenanceWindow-1
+                    },
+                    "kbNumbersToInclude": [],
+                    "kbNumbersToExclude": []
+                },
+                {
+                    "name": "dev-patch-tuesday",
+                    "classifications": [
+                        "Security",
+                        "Critical"
+                    ],
+                    "rebootSetting": "Always",
+                    "maintenanceWindow": {
+                        "startDateTime": "2023-04-13 02:00",
+                        "duration": "03:00",
+                        "timeZone": "Cen. Australia Standard Time",
+                        "recurEvery": "4Week Thursday"
+                    },
+                    "kbNumbersToInclude": [],
+                    "kbNumbersToExclude": []
+                },
+                {
+                    "name": "np-patch-tuesday",
+                    "classifications": [
+                        "Security",
+                        "Critical"
+                    ],
+                    "rebootSetting": "Always",
+                    "maintenanceWindow": {
+                        "startDateTime": "2023-04-15 02:00",
+                        "duration": "03:00",
+                        "timeZone": "Cen. Australia Standard Time",
+                        "recurEvery": "4Week Saturday"
+                    },
+                    "kbNumbersToInclude": [],
+                    "kbNumbersToExclude": []
+                },
+                {
+                    "name": "prod-patch-tuesday",
+                    "classifications": [
+                        "Security",
+                        "Critical"
+                    ],
+                    "rebootSetting": "Always",
+                    "maintenanceWindow": {
+                        "startDateTime": "2023-04-22 02:00",
+                        "duration": "03:00",
+                        "timeZone": "Cen. Australia Standard Time",
+                        "recurEvery": "4Week Saturday"
+                    },
+                    "kbNumbersToInclude": [],
+                    "kbNumbersToExclude": []
+                }
+            ]
+        }
+    }
+}
